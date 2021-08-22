@@ -33,6 +33,7 @@ Why so complicated (and not baked all into one container)? Well, thats just what
 - run it (correct networking mode, named "recorder"): `docker run -d --name recorder -p 8083:8083 -e OTR_HOST=127.0.0.1 -e OTR_PORT=1883 -e OTR_USER="<mqtt user name>" -e OTR_PASS="<mqtt password>" --network="host" -v recorder_store:/store owntracks/recorder`
 - is it running? `docker ps`
 - make sure it restarts automatically after reboot etc: `docker update --restart unless-stopped recorder`
+- check logs of container: `docker logs container`
 
 # Setting up nginx Reverse Proxy for Access Protection to Owntracks
 - `apt install apache2-utils` (for htpasswd files)
