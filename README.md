@@ -51,9 +51,12 @@ Why so complicated (and not baked all into one container)? Well, thats just what
 - data is placed in a docker volume (see above `docker volume create recorder_store`)
 - so it will be persistent (i.e. live on even when the container is re-started / deleted)
 - the `ocat` tool will only work from inside the container
-- get shell in container (no bash, sh only): `docker exec -ti /bin/sh recorder` (if necessary, modify the name parameter (recorder) accoring to your naming)
+- inspect: get shell in container (no bash, sh only): `docker exec -ti /bin/sh recorder` (if necessary, modify the name parameter (recorder) accoring to your naming)
   - ocat documentation is at https://github.com/owntracks/recorder#ocat
   - `ocat --list` for a list of users
   - `ocat --list -u <username>` for a list of a user's devices
   - `ocat -u <username> --device <device name> --from <timespec> --to <timespec> --format <formatspec>`
     - e.g. `ocat -u <username> --device <device name> --from 2022-01-01 --to 2022-01-31 --format json`
+- backup: run another container mounting the docker volume, tarring the volume contents, and writing these to a host directory:
+  - ```docker run --rm --volumes-from recorder -v /root/otbackup:/backup debian:stable-slim tar cvf /backup/backup.tar /store```
+  - this will mount the host directory `/root/otbackup` into a newly created container at `/backup` and instruct the container to run a `tar` command on everything stored on the recorder's (`--volumes-from recorder`) storage volume (`store`).
