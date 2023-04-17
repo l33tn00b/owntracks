@@ -50,8 +50,9 @@ Why so complicated (and not baked all into one container)? Well, thats just what
 # inspect / export your location data
 - data is placed in a docker volume (see above `docker volume create recorder_store`)
 - so it will be persistent (i.e. live on even when the container is re-started / deleted)
-- the `ocat` tool will only work fomr inside the container
+- the `ocat` tool will only work from inside the container
 - get shell in container (no bash, sh only): `docker exec -ti /bin/sh recorder` (if necessary, modify the name parameter (recorder) accoring to your naming)
   - `ocat --list` for a list of users
   - `ocat --list -u <username>` for a list of a user's devices
-  - `ocat -u <username> --device <device name> --from <timespec> --to <timespec> --format <formatspec>`, e.g. `ocat -u <username> --device <device name> --from 2022-01-01 --to 2022-01-31 --format json`
+  - `ocat -u <username> --device <device name> --from <timespec> --to <timespec> --format <formatspec>`
+    - e.g. `ocat -u <username> --device <device name> --from 2022-01-01 --to 2022-01-31 --format json`
