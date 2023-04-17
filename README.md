@@ -46,3 +46,9 @@ Why so complicated (and not baked all into one container)? Well, thats just what
 
 # other stuff to watch out for:
 - leave port 80 open for certbot/letsencrypt to be able to automatically renew certificates
+
+# inspect / export your location data
+- data is placed in a docker volume (see above `docker volume create recorder_store`)
+- so it will be persistent (i.e. live on even when the container is re-started / deleted)
+- the `ocat` tool will only work fomr inside the container
+- get shell in container (no bash, sh only): `docker exec -ti /bin/sh recorder` (if necessary, modify the name parameter (recorder) accoring to your naming)
