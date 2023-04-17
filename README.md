@@ -54,3 +54,4 @@ Why so complicated (and not baked all into one container)? Well, thats just what
 - get shell in container (no bash, sh only): `docker exec -ti /bin/sh recorder` (if necessary, modify the name parameter (recorder) accoring to your naming)
   - `ocat --list` for a list of users
   - `ocat --list -u <username>` for a list of a user's devices
+  - `ocat -u <username> --device <device name> --from <timespec> --to <timespec> --format <formatspec>`, e.g. `ocat -u <username> --device <device name> --from 2022-01-01 --to 2022-01-31 --format json`
