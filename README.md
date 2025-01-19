@@ -51,7 +51,7 @@ Why so complicated (and not baked all into one container)? Well, thats just what
 - data is placed in a docker volume (see above `docker volume create recorder_store`)
 - so it will be persistent (i.e. live on even when the container is re-started / deleted)
 - the `ocat` tool will only work from inside the container
-- inspect: get shell in container (no bash, sh only): `docker exec -ti /bin/sh recorder` (if necessary, modify the name parameter (recorder) accoring to your naming)
+- inspect: get shell in container (no bash, sh only): `docker exec -ti recorder /bin/sh` (if necessary, modify the name parameter (recorder) accoring to your naming)
   - ocat documentation is at https://github.com/owntracks/recorder#ocat
   - `ocat --list` for a list of users
   - `ocat --list -u <username>` for a list of a user's devices
