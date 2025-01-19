@@ -57,6 +57,9 @@ Why so complicated (and not baked all into one container)? Well, thats just what
   - `ocat --list -u <username>` for a list of a user's devices
   - `ocat -u <username> --device <device name> --from <timespec> --to <timespec> --format <formatspec>`
     - e.g. `ocat -u <username> --device <device name> --from 2022-01-01 --to 2022-01-31 --format json`
+    - maybe just dump the console output to a file via redirection: `ocat -u <username> --device <device name> --from 2022-01-01 --to 2022-01-31 --format json > tracks.json`
+    - exit container: `exit`
+  - copy file from container to host: `docker cp recorder/tracks.json ./`
 - backup: run another container mounting the docker volume, tarring the volume contents, and writing these to a host directory:
   - ```docker run --rm --volumes-from recorder -v /root/otbackup:/backup debian:stable-slim tar cvf /backup/backup.tar /store```
   - this will mount the host directory `/root/otbackup` into a newly created container at `/backup` and instruct the container to run a `tar` command on everything stored on the recorder's (`--volumes-from recorder`) storage volume (`store`).
